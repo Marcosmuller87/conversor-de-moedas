@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="mb-3">
+        <label for="quantidade" class="form-label">Quantidade de Divisa</label>
+        <input type="number" class="form-control form-control-lg" [(ngModel)]="quantidade" id="quantidade"
+          (input)="converter()" placeholder="Ingrese aqui a quantidade...">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <label for="converterDe" class="form-label">Converter De</label>
+      <select class="form-select" id="converterDe" aria-label="Default select example" [(ngModel)]="converterDe"
+        (change)="converter()">
+        <option *ngFor="let moeda of moedas">{{moeda}}</option>
+      </select>
+    </div>
+    <div class="col-lg-6">
+      <label for="ConverterPara" class="form-label">Converter Para</label>
+      <select class="form-select" id="ConverterPara" aria-label="Default select example" [(ngModel)]="converterPara"
+        (change)="converter()">
+        <option *ngFor="let moeda of moedas">{{moeda}}</option>
+      </select>
+    </div>
+  </div>
+  <h4 *ngIf="quantidade > 0" class="text-center mt-3">
+    <span class="badge bg-success">{{quantidade}} {{converterDe}} </span>
+    <span class="badge bg-secondary">Equivalem a:</span>
+    <span class="badge bg-success">{{total | number: '0.0-2'}} {{converterPara}}</span>
+  </h4>
+</div>
